@@ -10,18 +10,16 @@
 
 <table> 
     <tr>
-        <th>Attractions</th>
         <th>State</th>
-        <th>State Details</th>  
+        <th>Attractions</th>
     </tr>
     {% for item in attractions|dictsort:'homeState.stateName' %}
+    {% if item.homeState|lower == statename %}
     <tr> 
-        <td>{{ item.attractionName }}</td>
         <td>{{ item.homeState }}</td>
-        <td><a href="{% url 'details' item.homeState|slugify %}">State Details</a></td>
+        <td>{{ item.attractionName }}</td>
     </tr>
+    {% endif %}
     {% endfor %}
 </table>
-<a href="{% url 'statecreate' %}">Add a State</a><br>
-<a href="{% url 'attractioncreate' %}">Add an Attractions</a>
 {% endblock %}
