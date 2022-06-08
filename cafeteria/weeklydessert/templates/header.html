@@ -1,0 +1,17 @@
+{% load static %} 
+
+<link rel="stylesheet" type="text/css" href="{% static 'weeklydessert/header.css' %}">
+<a class="logout_button" href="{% url 'logout' %}">Log Out</a>
+<div class="header">
+    {% if user.username %}
+    {% endif %}
+    <div class="header-content">
+        <h1 class="header-title">Dessert Island</h1>
+        {% if user.username %}
+        <h4 class="header-greet">Welcome {{ user.username }}</h4>
+        {% endif %}
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
